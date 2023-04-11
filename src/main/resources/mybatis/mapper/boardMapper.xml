@@ -5,8 +5,21 @@
     
     <mapper namespace="com.board.dao.BoardDAO">
     
-    <select id="list" parameterType="BoardDTO" resultType="BoardDTO">
-    select * from board
+    <select id="count" resultType="int">
+    SELECT count(*) from board
     </select>
     
+    
+    
+    
+    
+  <select id="list" parameterType="PageDTO" resultType="BoardDTO">
+     <![CDATA[  
+       select * from 
+        (select rownum as rm, a.* from(
+           select * from board
+             order by ref desc, re_step asc) a)b
+        where b.rm >= #{startRow}  and b.rm <= #{endRow}
+        ]]>
+     </select>
     </mapper>

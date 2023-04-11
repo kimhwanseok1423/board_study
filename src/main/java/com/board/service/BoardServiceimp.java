@@ -7,17 +7,34 @@ import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDAO;
 import com.board.dto.BoardDTO;
+import com.board.dto.PageDTO;
 @Service
 public class BoardServiceimp implements BoardService{
 @Autowired
 	private BoardDAO dao;
 
 	@Override
-	public List<BoardDTO> listProcess() {
+	public List<BoardDTO> listProcess(PageDTO pv) {
 		
-		return dao.list();
+		return dao.list(pv);
 		
 	}
+
 	
+	
+	
+	@Override
+	public int countProcess() {
+		// TODO Auto-generated method stub
+		return dao.count();
+	}
+
+
+
+
+	
+
+
+
 
 }

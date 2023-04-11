@@ -6,10 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.board.dto.BoardDTO;
+import com.board.dto.PageDTO;
 
 @Mapper
 @Repository
 public interface BoardDAO {
-public List<BoardDTO> list();
+	public int count();
+public List<BoardDTO> list(PageDTO pv);
 
 }
